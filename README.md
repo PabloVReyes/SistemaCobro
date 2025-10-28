@@ -43,7 +43,7 @@ SistemaCobro/
 
 ### 1. Clonar el repositorio
 ```bash
-git clone <URL-del-repositorio>
+git clone https://github.com/PabloVReyes/SistemaCobro.git
 cd SistemaCobro
 ```
 
@@ -53,7 +53,7 @@ cd backend
 yarn install
 yarn dev
 ```
-- URL por defecto: `http://localhost:5000`
+- URL por defecto: `http://localhost:3000`
 
 ### 3. Ejecutar Frontend
 ```bash
