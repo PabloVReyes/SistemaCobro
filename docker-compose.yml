@@ -1,0 +1,17 @@
+services:
+  mysql:
+    image: mysql:9.2.0 
+    container_name: sistema_cobros
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: SG9sYU11bmRv*
+      MYSQL_DATABASE: cobros
+      MYSQL_USER: cobro
+      MYSQL_PASSWORD: SG9sYU11bmRv*
+    ports:
+      - "3306:3306"
+    volumes:
+      - sistema_cobros:/var/lib/mysql
+
+volumes:
+  sistema_cobros:

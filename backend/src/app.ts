@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import prisma from './config/prisma';
 
 dotenv.config();
 
@@ -11,11 +12,17 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+const listarUsuarios = async () => {
+    const usuarios = await prisma.usuario.findMany();
+    return usuarios;
+};
+
 // Rutas de prueba
-app.get('/', (req: Request, res: Response) => {
-  res.send('¡Backend con Node.js y TypeScript funcionando!');
+app.get('/', async(req: Request, res: Response) => {
+    const data = await listarUsuarios()
+    res.json(data)
 });
 
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

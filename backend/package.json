@@ -4,9 +4,14 @@
     "main": "index.js",
     "license": "MIT",
     "dependencies": {
+        "@prisma/client": "^6.19.0",
         "cors": "^2.8.5",
         "dotenv": "^17.2.3",
-        "express": "^5.1.0"
+        "express": "^5.1.0",
+        "prisma": "^6.19.0"
+    },
+    "prisma": {
+        "seed": "ts-node prisma/seed.ts"
     },
     "scripts": {
         "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
