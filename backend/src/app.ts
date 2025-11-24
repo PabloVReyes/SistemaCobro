@@ -1,28 +1,67 @@
-import express, { Request, Response } from 'express';
+import express, { Express } from "express";
+import * as http from "http";
 import cors from 'cors';
-import dotenv from 'dotenv';
-import prisma from './config/prisma';
+import cookieParser from 'cookie-parser';
+import responseTime from 'response-time';
+import path from "path";
+import fs from 'fs';
+import morgan from 'morgan';
+require('dotenv').config();
 
-dotenv.config();
+class server {
+    private app: Express;
+    private server: http.Server;
+    private port: number;
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+    constructor() {
+        this.app = express();
+        this.port = parseInt(`${process.env.PORT}`) || 3000;
+        this.server = http.createServer(this.app)
+    }
 
-// Middleware
-app.use(cors());
-app.use(express.json());
+    middleware() {
+        this.app.use(cors({ origin: '*' }))
+        this.app.use(cookieParser())
+        this.app.use(responseTime())
+    }
 
-const listarUsuarios = async () => {
-    const usuarios = await prisma.usuario.findMany();
-    return usuarios;
-};
+    settingPublicRoute() {
+        const public_path = path.resolve(__dirname, '../uploads');
+        this.app.use("/uploads", express.static(public_path))
+    }
 
-// Rutas de prueba
-app.get('/', async(req: Request, res: Response) => {
-    const data = await listarUsuarios()
-    res.json(data)
-});
+    settingLogFile() {
+        const logDir = path.join(__dirname, '../log')
+        if (!fs.existsSync(logDir)) {
+            fs.mkdirSync(logDir)
+        }
 
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+        const logFile = fs.createWriteStream(path.join(__dirname, '../log/request.log'), { flags: 'a' })
+        this.app.use(morgan('combined', { stream: logFile }))
+    }
+
+    settingDataFormProcess() {
+        this.app.use(express.urlencoded({ extended: false }));
+        this.app.use(express.json())
+    }
+
+    settingRoutes() {
+        const router = require('./routes/routes')
+        this.app.use('/', router)
+    }
+
+    execute() {
+        this.middleware();
+        this.settingPublicRoute();
+        this.settingLogFile();
+        this.settingDataFormProcess();
+        this.settingRoutes()
+        this.server.listen(this.port, () => {
+            console.log(`http://localhost:${this.port}`)
+        })
+    }
+}
+
+const Server = new server();
+
+Server.execute();
