@@ -28,14 +28,14 @@ Implementación de una API REST con las siguientes características:
 -   **Manejo de variables de entorno** con `dotenv`.
 -   **Archivo `.env.example`** incluido para fácil configuración.
 
-#### Endpoints principales:
+### Endpoints principales
 
-  Método   Ruta         Descripción
-  -------- ------------ ---------------------------
-  GET      `/vecinos`   Obtener todos los vecinos
-  POST     `/vecinos`   Registrar un nuevo vecino
-  GET      `/cobros`    Obtener todos los cobros
-  POST     `/cobros`    Registrar un nuevo cobro
+| Método | Ruta       | Descripción                |
+|--------|------------|-----------------------------|
+| GET    | /vecinos   | Obtener todos los vecinos   |
+| POST   | /vecinos   | Registrar un nuevo vecino   |
+| GET    | /cobros    | Obtener todos los cobros    |
+| POST   | /cobros    | Registrar un nuevo cobro    |
 
 ------------------------------------------------------------------------
 
