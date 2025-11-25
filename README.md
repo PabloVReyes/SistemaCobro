@@ -179,9 +179,9 @@ Puedes consultar el proyecto completo aquí:
 
 ## 📌 Estado del sprint
 
-✔ Backend y Frontend conectados
-✔ CRUD básico funcional
-✔ API estable
+✔ Backend y Frontend conectados <br>
+✔ CRUD básico funcional <br>
+✔ API estable <br>
 ✔ Interfaz inicial funcional
 
 Próximos pasos: - Sistema de autenticación
