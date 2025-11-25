@@ -32,10 +32,10 @@ Implementación de una API REST con las siguientes características:
 
 | Método | Ruta       | Descripción                |
 |--------|------------|-----------------------------|
-| GET    | /vecinos   | Obtener todos los vecinos   |
-| POST   | /vecinos   | Registrar un nuevo vecino   |
-| GET    | /cobros    | Obtener todos los cobros    |
-| POST   | /cobros    | Registrar un nuevo cobro    |
+| GET    | /api/vecinos   | Obtener todos los vecinos   |
+| POST   | /api/vecinos   | Registrar un nuevo vecino   |
+| GET    | /api/cobros    | Obtener todos los cobros    |
+| POST   | /api/cobros    | Registrar un nuevo cobro    |
 
 ------------------------------------------------------------------------
 
