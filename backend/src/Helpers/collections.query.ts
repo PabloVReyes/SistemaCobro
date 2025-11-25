@@ -3,7 +3,12 @@ import prisma from "src/Config/prisma";
 export const getCollectionsQuery = async () => {
     return new Promise(async (resolve, reject) => {
         try {
-            const data = await prisma.cobro.findMany();
+            const data = await prisma.cobro.findMany({
+                include: {
+                    usuario: true,
+                    vecino: true
+                }
+            });
             resolve(data);
         } catch (error) {
             reject([]);
