@@ -44,7 +44,7 @@ Implementación de una API REST con las siguientes características:
 -   Vista con el listado de vecinos conectada al backend.
 -   Vista con el listado de cobros.
 -   Formularios básicos para registrar nuevos datos.
--   Consumo de la API mediante `fetch`.
+-   Consumo de la API mediante `axios`.
 -   **Archivo `.env.example`** para variables del cliente.
 
 ------------------------------------------------------------------------
@@ -53,17 +53,17 @@ Implementación de una API REST con las siguientes características:
 
 ### 🔹 Backend
 
--   Node.js\
--   Express\
--   Prisma ORM\
--   SQLite o MySQL (según configuración)\
--   Dotenv\
+-   Node.js
+-   Express
+-   Prisma ORM
+-   SQLite o MySQL (según configuración)
+-   Dotenv
 -   Faker.js (para seed de datos)
 
 ### 🔹 Frontend
 
--   React\
--   Vite\
+-   React
+-   Vite
 -   TypeScript
 
 ------------------------------------------------------------------------
@@ -165,34 +165,34 @@ Puedes consultar el proyecto completo aquí:
 
 ## 🧠 Conceptos aplicados en este sprint
 
--   Programación modular y arquitectura por capas\
--   Abstracción, separación de responsabilidades y reutilización\
--   Serialización y manejo de datos en JSON\
--   Patrón controlador--servicio--repositorio\
--   Refactorización para mejorar legibilidad\
--   Uso de ORM moderno (Prisma)\
--   Manejo de variables de entorno con Dotenv\
--   Automatización de datos de prueba (Faker + Seed)\
+-   Programación modular y arquitectura por capas
+-   Abstracción, separación de responsabilidades y reutilización
+-   Serialización y manejo de datos en JSON
+-   Patrón controlador--servicio--repositorio
+-   Refactorización para mejorar legibilidad
+-   Uso de ORM moderno (Prisma)
+-   Manejo de variables de entorno con Dotenv
+-   Automatización de datos de prueba (Faker + Seed)
 -   Integración de Frontend y Backend mediante API REST
 
 ------------------------------------------------------------------------
 
 ## 📌 Estado del sprint
 
-✔ Backend y Frontend conectados\
-✔ CRUD básico funcional\
-✔ API estable\
+✔ Backend y Frontend conectados
+✔ CRUD básico funcional
+✔ API estable
 ✔ Interfaz inicial funcional
 
-Próximos pasos: - Sistema de autenticación\
-- Panel de administración\
-- Reportes y estadísticas\
+Próximos pasos: - Sistema de autenticación
+- Panel de administración
+- Reportes y estadísticas
 - Mejoras visuales del frontend
 
 ------------------------------------------------------------------------
 
 ## 📝 Autor
 
-Pablo Vázquez Reyes\
-Desarrollo de Software --- Primer Sprint\
+Pablo Vázquez Reyes
+Desarrollo de Software --- Primer Sprint
 2025
