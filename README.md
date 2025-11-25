@@ -1,88 +1,206 @@
 # SistemaCobro
 
-## Descripción
-Este proyecto permite gestionar los pagos de los vecinos, emitir recibos digitales y consultar el historial de pagos.  
-El sistema está dividido en **frontend** y **backend**:
+SistemaCobro es una aplicación de gestión para administrar cobros de
+vigilancia vecinal. Este proyecto está dividido en dos partes: **Backend
+(Node.js + Express + Prisma)** y **Frontend (React + Vite +
+TypeScript)**. La arquitectura está diseñada bajo principios de
+separación de responsabilidades, escalabilidad y buenas prácticas
+modernas de desarrollo.
 
-- **Frontend:** React + TypeScript + Vite  
-- **Backend:** Node.js + Express + TypeScript  
-- **IDE recomendado:** Visual Studio Code  
+------------------------------------------------------------------------
 
-Aplica el paradigma de **Programación Orientada a Objetos (POO)**, organizando la lógica en clases y servicios y manejando relaciones como agregación y composición. La primera iteración cubre funcionalidades básicas: registro de cobros, emisión de recibos y consulta de pagos.
+## 🚀 Primer Sprint --- Entrega Funcional
 
----
+Este sprint incluye:
 
-## Estructura del proyecto
+------------------------------------------------------------------------
 
+### ✔️ 1. Backend funcional (Node.js + Express + Prisma)
+
+Implementación de una API REST con las siguientes características:
+
+-   **Rutas organizadas por módulo** (vecinos y cobros).
+-   **Controladores** para manejar la lógica de solicitudes.
+-   **Servicios** como capa de negocio intermedia.
+-   **Consultas Prisma (queries)** para acceder a la base de datos.
+-   **Base de datos** configurada con Prisma.
+-   **Seed automático** ejecutado mediante `npx prisma migrate reset`.
+-   **Manejo de variables de entorno** con `dotenv`.
+-   **Archivo `.env.example`** incluido para fácil configuración.
+
+#### Endpoints principales:
+
+  Método   Ruta         Descripción
+  -------- ------------ ---------------------------
+  GET      `/vecinos`   Obtener todos los vecinos
+  POST     `/vecinos`   Registrar un nuevo vecino
+  GET      `/cobros`    Obtener todos los cobros
+  POST     `/cobros`    Registrar un nuevo cobro
+
+------------------------------------------------------------------------
+
+### ✔️ 2. Frontend funcional (React + Vite + TypeScript)
+
+-   Vista con el listado de vecinos conectada al backend.
+-   Vista con el listado de cobros.
+-   Formularios básicos para registrar nuevos datos.
+-   Consumo de la API mediante `fetch`.
+-   **Archivo `.env.example`** para variables del cliente.
+
+------------------------------------------------------------------------
+
+## 📦 Tecnologías usadas
+
+### 🔹 Backend
+
+-   Node.js\
+-   Express\
+-   Prisma ORM\
+-   SQLite o MySQL (según configuración)\
+-   Dotenv\
+-   Faker.js (para seed de datos)
+
+### 🔹 Frontend
+
+-   React\
+-   Vite\
+-   TypeScript
+
+------------------------------------------------------------------------
+
+## 📂 Estructura del proyecto
+
+    backend/
+     ├── src/
+     │   ├── routes/
+     │   ├── controllers/
+     │   ├── services/
+     │   ├── queries/
+     │   └── app.js
+     ├── prisma/
+     │   ├── schema.prisma
+     │   └── seed.js
+     ├── .env
+     ├── .env.example
+     └── package.json
+
+    frontend/
+     ├── src/
+     │   ├── components/
+     │   ├── pages/
+     │   └── services/
+     ├── .env
+     ├── .env.example
+     └── package.json
+
+------------------------------------------------------------------------
+
+## 🔧 Configuración y ejecución
+
+------------------------------------------------------------------------
+
+### 🔹 Backend
+
+1.  Instalar dependencias:
+
+```{=html}
+<!-- -->
 ```
-SistemaCobro/
-├─ frontend/
-│  ├─ src/
-│  │  ├─ components/
-│  │  ├─ services/
-│  │  ├─ App.tsx
-│  │  └─ main.tsx
-│  ├─ package.json
-│  ├─ tsconfig.json
-│  └─ vite.config.ts
-│
-├─ backend/
-│  ├─ src/
-│  │  ├─ models/
-│  │  ├─ routes/
-│  │  └─ app.ts
-│  ├─ package.json
-│  └─ tsconfig.json
-│
-└─ README.md
+    yarn install
+
+2.  Copiar variables de entorno:
+
+```{=html}
+<!-- -->
 ```
+    cp .env.example .env
 
----
+3.  Crear y migrar la base de datos:
 
-## Instalación y ejecución
-
-### 1. Clonar el repositorio
-```bash
-git clone https://github.com/PabloVReyes/SistemaCobro.git
-cd SistemaCobro
+```{=html}
+<!-- -->
 ```
+    npx prisma migrate dev --name init
 
-### 2. Ejecutar Backend
-```bash
-cd backend
-yarn install
-yarn dev
+4.  Ejecutar servidor:
+
+```{=html}
+<!-- -->
 ```
-- URL por defecto: `http://localhost:3000`
+    yarn dev
 
-### 3. Ejecutar Frontend
-```bash
-cd frontend
-yarn install
-yarn dev
+5.  Reset + seed automático:
+
+```{=html}
+<!-- -->
 ```
-- URL por defecto: `http://localhost:5173`
+    npx prisma migrate reset
 
-> Nota: Ejecutar **frontend** y **backend** simultáneamente para que la aplicación funcione correctamente.
+------------------------------------------------------------------------
 
----
+### 🔹 Frontend
 
-## Funcionalidades de la primera iteración
-1. Iniciar sesión  
-2. Registrar cobros en efectivo  
-3. Emitir recibos digitales o impresos  
-4. Consultar pagos por vecino o por fecha  
+1.  Instalar dependencias:
 
----
+```{=html}
+<!-- -->
+```
+    yarn install
 
-## Recomendaciones
-- Visual Studio Code permite depuración y extensiones para React, TypeScript y Node.js.  
-- Node.js v18+ y Yarn actualizado son requeridos.  
-- Mantener ambos servidores ejecutándose al mismo tiempo para la comunicación mediante API.  
+2.  Copiar variables de entorno:
 
----
+```{=html}
+<!-- -->
+```
+    cp .env.example .env
 
-## Contribuciones
-Este proyecto es desarrollado por **Pablo Vázquez Reyes** como parte de la actividad de desarrollo de software para la Maestría en Educación.  
-Se aceptan sugerencias y mejoras siguiendo buenas prácticas de **POO** y **React/Node.js**.
+3.  Ejecutar el servidor de desarrollo:
 
+```{=html}
+<!-- -->
+```
+    yarn dev
+
+------------------------------------------------------------------------
+
+## 🌐 Repositorio
+
+Puedes consultar el proyecto completo aquí:
+
+👉 **https://github.com/PabloVReyes/SistemaCobro/tree/develop**
+
+------------------------------------------------------------------------
+
+## 🧠 Conceptos aplicados en este sprint
+
+-   Programación modular y arquitectura por capas\
+-   Abstracción, separación de responsabilidades y reutilización\
+-   Serialización y manejo de datos en JSON\
+-   Patrón controlador--servicio--repositorio\
+-   Refactorización para mejorar legibilidad\
+-   Uso de ORM moderno (Prisma)\
+-   Manejo de variables de entorno con Dotenv\
+-   Automatización de datos de prueba (Faker + Seed)\
+-   Integración de Frontend y Backend mediante API REST
+
+------------------------------------------------------------------------
+
+## 📌 Estado del sprint
+
+✔ Backend y Frontend conectados\
+✔ CRUD básico funcional\
+✔ API estable\
+✔ Interfaz inicial funcional
+
+Próximos pasos: - Sistema de autenticación\
+- Panel de administración\
+- Reportes y estadísticas\
+- Mejoras visuales del frontend
+
+------------------------------------------------------------------------
+
+## 📝 Autor
+
+Pablo Vázquez Reyes\
+Desarrollo de Software --- Primer Sprint\
+2025
