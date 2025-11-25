@@ -1,6 +1,6 @@
-# SistemaCobro
+# Sistema de Cobro
 
-SistemaCobro es una aplicación de gestión para administrar cobros de
+Sistema de Cobro es una aplicación de gestión para administrar cobros de
 vigilancia vecinal. Este proyecto está dividido en dos partes: **Backend
 (Node.js + Express + Prisma)** y **Frontend (React + Vite +
 TypeScript)**. La arquitectura está diseñada bajo principios de
@@ -103,38 +103,33 @@ Implementación de una API REST con las siguientes características:
 
 1.  Instalar dependencias:
 
-```{=html}
-<!-- -->
+```bash
+yarn install
 ```
-    yarn install
 
 2.  Copiar variables de entorno:
 
-```{=html}
-<!-- -->
+```bash
+cp .env.example .env
 ```
-    cp .env.example .env
 
 3.  Crear y migrar la base de datos:
 
-```{=html}
-<!-- -->
+```bash
+npx prisma migrate dev --name init
 ```
-    npx prisma migrate dev --name init
 
 4.  Ejecutar servidor:
 
-```{=html}
-<!-- -->
+```bash
+yarn dev
 ```
-    yarn dev
 
 5.  Reset + seed automático:
 
-```{=html}
-<!-- -->
+```bash
+npx prisma migrate reset
 ```
-    npx prisma migrate reset
 
 ------------------------------------------------------------------------
 
@@ -142,24 +137,21 @@ Implementación de una API REST con las siguientes características:
 
 1.  Instalar dependencias:
 
-```{=html}
-<!-- -->
+```bash
+yarn install
 ```
-    yarn install
 
 2.  Copiar variables de entorno:
 
-```{=html}
-<!-- -->
+```bash
+cp .env.example .env
 ```
-    cp .env.example .env
 
 3.  Ejecutar el servidor de desarrollo:
 
-```{=html}
-<!-- -->
+```bash
+yarn dev
 ```
-    yarn dev
 
 ------------------------------------------------------------------------
 
