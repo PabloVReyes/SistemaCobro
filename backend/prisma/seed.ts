@@ -1,14 +1,22 @@
 // prisma/seed.ts
 import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcryptjs"
 
 const prisma = new PrismaClient();
 
 async function main() {
     // Crear usuarios
-    const usuarios = await prisma.usuario.createMany({
+    await prisma.usuario.createMany({
         data: [
-            { nombre: "Admin", usuario: "admin", password: "admin123", rol: "Administrador" },
-            { nombre: "Cajero 1", usuario: "cajero1", password: "123456", rol: "Cajero" },
+            {
+                username: "Admin",
+                password: bcrypt.hashSync("admin", 10),
+                rol: "Administrador"
+            },
+            {
+                username: "Pablo",
+                password: bcrypt.hashSync("pablo", 10),
+            },
         ],
     });
 
@@ -22,7 +30,7 @@ async function main() {
     });
 
     // Obtener IDs creados para relaciones
-    const usuarioAdmin = await prisma.usuario.findFirst({ where: { usuario: "admin" } });
+    const usuarioAdmin = await prisma.usuario.findFirst({ where: { username: "admin" } });
     const vecino = await prisma.vecino.findFirst();
 
     // Crear cobros aleatorios

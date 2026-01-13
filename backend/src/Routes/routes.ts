@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     }
 }); 
 
-router.use('/api/users', user);
+router.use('/api/auth', user);
 router.use('/api/neighbor', neighbor);
 router.use('/api/collection', collection);
 

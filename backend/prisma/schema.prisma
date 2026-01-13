@@ -14,12 +14,13 @@ datasource db {
 }
 
 model Usuario {
-    id       Int     @id @default(autoincrement())
-    nombre   String
-    usuario  String  @unique
-    password String
-    rol      String
-    cobros   Cobro[]
+    id        String   @id @default(uuid())
+    username  String   @unique
+    password  String
+    rol       String   @default("USER")
+    active    Boolean  @default(true)
+    createdAt DateTime @default(now())
+    cobros    Cobro[]
 }
 
 model Vecino {
@@ -35,7 +36,7 @@ model Cobro {
     fecha     DateTime @default(now())
     metodo    String
     vecinoId  Int
-    usuarioId Int
+    usuarioId String
     vecino    Vecino   @relation(fields: [vecinoId], references: [id])
     usuario   Usuario  @relation(fields: [usuarioId], references: [id])
     recibo    Recibo?  @relation(fields: [reciboId], references: [id])
