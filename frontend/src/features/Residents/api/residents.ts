@@ -27,7 +27,7 @@ export const deleteResidents = async (id: number) => {
 }
 
 export const updateResident = async ({ id, name, address, phone, email }: { id: number, name: string, address: string, phone: string, email: string }) => {
-    const response = await api.post(`/api/residents/${id}`, {
+    const response = await api.put(`/api/residents/${id}`, {
         name,
         address,
         phone,

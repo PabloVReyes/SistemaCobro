@@ -16,4 +16,5 @@ export interface ResidentsState {
     fetch: () => void;
     add: (data: any) => void;
     remove: (id: number) => void;
+    update: (data: any) => void;
 }

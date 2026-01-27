@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { type ResidentsState } from "./types";
 import { getResidents, postResidents } from "../api";
-import { deleteResidents, getResidentsCount } from "../api/residents";
+import { deleteResidents, getResidentsCount, updateResident } from "../api/residents";
 
 export const useResidentsStore = create<ResidentsState>((set, get) => ({
     // Paginacion
@@ -51,6 +51,15 @@ export const useResidentsStore = create<ResidentsState>((set, get) => ({
     async remove(id) {
         try {
             await deleteResidents(id)
+            get().fetch()
+        } catch (error: any) {
+            throw new Error(error)
+        }
+    },
+
+    async update(data) {
+        try {
+            await updateResident(data)
             get().fetch()
         } catch (error: any) {
             throw new Error(error)

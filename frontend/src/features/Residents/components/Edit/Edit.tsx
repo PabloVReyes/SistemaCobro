@@ -14,10 +14,10 @@ interface Props {
     email: string;
 }
 
-export const Edit = ({id, name, address, phone, email}: Props) => {
+export const Edit = ({ id, name, address, phone, email }: Props) => {
     const { closeModal, openModal } = useModalStore()
     const [loading, setLoading] = useState<boolean>(false)
-    const { add } = useResidentsStore()
+    const { update } = useResidentsStore()
 
     const form = useForm({
         initialValues: {
@@ -54,7 +54,7 @@ export const Edit = ({id, name, address, phone, email}: Props) => {
         try {
             setLoading(true)
 
-            add(values)
+            update(values)
 
             openModal({
                 title: "Residente editado",
