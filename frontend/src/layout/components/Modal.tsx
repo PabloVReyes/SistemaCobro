@@ -1,8 +1,19 @@
 import { Modal as ModalMantine, Stack, Text } from "@mantine/core"
-import { useModalStore } from "../../store/UIStore"
+import { useEffect } from "react";
+import { useModalStore } from "../../store/UIStore";
 
 export const Modal = () => {
-    const { opened, modal, closeModal } = useModalStore()
+    const { opened, closeModal, modal } = useModalStore()
+
+    useEffect(() => {
+        if (!opened || !modal?.autoClose) return;
+
+        const timer = setTimeout(() => {
+            closeModal();
+        }, modal.autoClose);
+
+        return () => clearTimeout(timer);
+    }, [opened, modal?.autoClose, closeModal]);
 
     return (
         <ModalMantine.Root
@@ -13,17 +24,20 @@ export const Modal = () => {
         >
             <ModalMantine.Overlay />
             <ModalMantine.Content>
-                <ModalMantine.Header>
-                    <ModalMantine.Title style={{ width: "100%", textAlign: "center" }}>
-                        {modal?.title}
-                        {modal?.subtitle && (
-                            <Text size="sm" c="dimmed">
-                                {modal.subtitle}
-                            </Text>
-                        )}
-                    </ModalMantine.Title>
-                    <ModalMantine.CloseButton />
-                </ModalMantine.Header>
+                {(modal?.title || modal?.subtitle) &&
+                    (
+                        <ModalMantine.Header>
+                            <ModalMantine.Title style={{ width: "100%", textAlign: "center" }}>
+                                {modal?.title}
+                                {modal?.subtitle && (
+                                    <Text size="sm" c="dimmed">
+                                        {modal.subtitle}
+                                    </Text>
+                                )}
+                            </ModalMantine.Title>
+                        </ModalMantine.Header>
+                    )
+                }
                 <ModalMantine.Body>
                     <Stack>{modal?.content}</Stack>
                 </ModalMantine.Body>

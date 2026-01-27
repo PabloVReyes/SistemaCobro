@@ -1,0 +1,1 @@
+export { getResidents, postResidents } from "./residents"

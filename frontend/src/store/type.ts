@@ -5,6 +5,7 @@ interface ModalData {
     title?: string;
     subtitle?: string;
     content: ReactNode;
+    autoClose?: number;
 }
 
 export interface ModalStore {

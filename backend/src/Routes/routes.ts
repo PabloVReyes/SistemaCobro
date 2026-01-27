@@ -1,6 +1,6 @@
 import { Router } from "express";
 import user from "../Routes/user.routes";
-import neighbor from "../Routes/neighbor.routes";
+import residents from "./residents.routes";
 import collection from "../Routes/collections.routes";
 
 const router: Router = Router();
@@ -11,10 +11,10 @@ router.get('/', (req, res) => {
     } catch (error) {
         res.status(500).json({ error: 'Error del servidor' });
     }
-}); 
+});
 
 router.use('/api/auth', user);
-router.use('/api/neighbor', neighbor);
+router.use('/api/residents', residents);
 router.use('/api/collection', collection);
 
 module.exports = router;

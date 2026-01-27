@@ -1,0 +1,1 @@
+export { ResidentsTable } from "./ResidentsTable"

@@ -9,7 +9,7 @@ generator client {
 }
 
 datasource db {
-    provider = "sqlite"
+    provider = "mysql"
     url      = env("DATABASE_URL")
 }
 
@@ -23,23 +23,26 @@ model Usuario {
     cobros    Cobro[]
 }
 
-model Vecino {
-    id        Int     @id @default(autoincrement())
-    nombre    String
-    direccion String
-    cobros    Cobro[]
+model Residente {
+    id      Int     @id @default(autoincrement())
+    name    String
+    address String
+    phone   String
+    email   String
+    status  Boolean @default(true)
+    cobros  Cobro[]
 }
 
 model Cobro {
-    id        Int      @id @default(autoincrement())
+    id        Int       @id @default(autoincrement())
     monto     Float
-    fecha     DateTime @default(now())
+    fecha     DateTime  @default(now())
     metodo    String
     vecinoId  Int
     usuarioId String
-    vecino    Vecino   @relation(fields: [vecinoId], references: [id])
-    usuario   Usuario  @relation(fields: [usuarioId], references: [id])
-    recibo    Recibo?  @relation(fields: [reciboId], references: [id])
+    vecino    Residente @relation(fields: [vecinoId], references: [id])
+    usuario   Usuario   @relation(fields: [usuarioId], references: [id])
+    recibo    Recibo?   @relation(fields: [reciboId], references: [id])
     reciboId  Int?
 }
 

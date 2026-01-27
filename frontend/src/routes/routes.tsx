@@ -1,9 +1,9 @@
 import type { RouteObject } from "react-router-dom";
 import { Layout } from "../layout";
-import { Neighbors } from "../pages/Neighbors";
 import { Collections } from "../pages/Collections";
 import { PrivateRoutes } from "./private.routes";
 import { authRoutes } from "../features/auth/routes/routes";
+import { residentsRoutes } from "../features";
 
 export const routes: RouteObject[] = [
     authRoutes,
@@ -15,10 +15,7 @@ export const routes: RouteObject[] = [
             </PrivateRoutes>
         ),
         children: [
-            {
-                index: true,
-                element: <Neighbors />
-            },
+            residentsRoutes,
             {
                 path: 'cobros',
                 element: <Collections />

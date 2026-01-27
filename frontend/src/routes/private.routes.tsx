@@ -9,7 +9,7 @@ interface PrivateRoutesProps {
 export const PrivateRoutes = ({ children }: PrivateRoutesProps) => {
     const { token, user } = useAuthStore()
 
-    if (!token || !user) {
+    if (!token) {
         return <Navigate to="/auth" replace />
     }
 

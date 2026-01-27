@@ -1,0 +1,1 @@
+export { useResidentsStore } from "./residents"
